@@ -1,0 +1,31 @@
+{
+  "name": "@pedroentringer/json2xml",
+  "version": "1.0.0",
+  "description": "convert json to xml",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": {
+    "name": "Pedro Entringer",
+    "email": "pedroentringer97@gmail.com",
+    "url": "https://pedroentringer.dev"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "prepare": "npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroentringer/json2xml" 
+   }
+}
