@@ -5,17 +5,17 @@ Convert JSON to XML
 ```js
 const {json2xml} = require('@pedroentringer/json2xml')
 
-const json = { name: "Pedro", age: 'XX' }
+const json = { people: {name: "Pedro", age: 'XX' } }
 
-const xml = json2xml("People", json)
+const xml = json2xml(json)
 ```
 Result:
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
-<People>
-    <name>Pedro</name>
-    <age>XX</age>
-</People>
+<people>
+  <name>Pedro</name>
+  <age>XX</age>
+</people>
 ```
 
 
@@ -25,25 +25,27 @@ Result:
 const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
-  name: {
-    attrs: {
-      encode: 'utf8',
-      isFullName: true
-    },
-    value: 'Pedro Entringer'
-  }, 
-  age: 'XX'
+  people: { 
+    name: {
+      attrs: {
+        encode: 'utf8',
+        isFullName: true
+      },
+      value: 'Pedro Entringer'
+    }, 
+    age: 'XX'
+  }
 }
 
-const xml = json2xml("People", json)
+const xml = json2xml(json)
 ```
 Result:
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
-<People>
+<people>
     <name encode="utf8" isFullName="true" >Pedro Entringer</name>
     <age>XX</age>
-</People>
+</people>
 ```
 
 ## Object Convert
@@ -51,39 +53,41 @@ Result:
 const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
-  name: {
-    attrs: {
-      encode: 'utf8',
-      isFullName: true
-    },
-    value: 'Pedro Entringer'
-  }, 
-  age: 'XX',
-  mother: {
+  people: { 
     name: {
       attrs: {
         encode: 'utf8',
         isFullName: true
       },
-      value: 'Juliana Entringer'
-    },
-    age: 'XX'
+      value: 'Pedro Entringer'
+    }, 
+    age: 'XX',
+    mother: {
+      name: {
+        attrs: {
+          encode: 'utf8',
+          isFullName: true
+        },
+        value: 'Juliana Entringer'
+      },
+      age: 'XX'
+    }
   }
 }
 
-const xml = json2xml("People", json)
+const xml = json2xml(json)
 ```
 Result:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<People>
+<people>
    <name encode="utf8" isFullName="true">Pedro Entringer</name>
    <age>XX</age>
    <mother>
       <name encode="utf8" isFullName="true">Juliana Entringer</name>
       <age>XX</age>
    </mother>
-</People>
+</people>
 ```
 
 ## Simple Array Convert
@@ -91,59 +95,61 @@ Result:
 const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
-  name: {
-    attrs: {
-      encode: 'utf8',
-      isFullName: true
-    },
-    value: 'Pedro Entringer'
-  }, 
-  age: 22,
-  mother: {
+  people: { 
     name: {
       attrs: {
         encode: 'utf8',
         isFullName: true
       },
       value: 'Pedro Entringer'
-    },
-    age: 50
-  },
-  brothers:{
-    brother: [
-      {
+    }, 
+    age: XX,
+    mother: {
+      name: {
         attrs: {
-          id: 1
+          encode: 'utf8',
+          isFullName: true
         },
-        value: "Nome"
+        value: 'Pedro Entringer'
       },
-      {
-        attrs: {
-          id: 2
+      age: XX
+    },
+    brothers:{
+      brother: [
+        {
+          attrs: {
+            id: 1
+          },
+          value: "Nome"
         },
-        value: "Nome"
-      }
-    ]
+        {
+          attrs: {
+            id: 2
+          },
+          value: "Nome"
+        }
+      ]
+    }
   }
 }
 
-const xml = json2xml("People", json)
+const xml = json2xml(json)
 ```
 Result:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<People>
+<people>
    <name encode="utf8" isFullName="true">Pedro Entringer</name>
-   <age>22</age>
+   <age>XX</age>
    <mother>
       <name encode="utf8" isFullName="true">Pedro Entringer</name>
-      <age>50</age>
+      <age>XX</age>
    </mother>
    <brothers>
       <brother id="1">Nome</brother>
       <brother id="2">Nome</brother>
    </brothers>
-</People>
+</people>
 ```
 
 ## Complex Array Convert
@@ -151,71 +157,73 @@ Result:
 const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
-  name: {
-    attrs: {
-      encode: 'utf8',
-      isFullName: true
-    },
-    value: 'Pedro Entringer'
-  }, 
-  age: 22,
-  mother: {
+  people: { 
     name: {
       attrs: {
         encode: 'utf8',
         isFullName: true
       },
       value: 'Pedro Entringer'
-    },
-    age: 50
-  },
-  brothers:{
-    brother: [
-      {
+    }, 
+    age: XX,
+    mother: {
+      name: {
         attrs: {
-          id: 1
+          encode: 'utf8',
+          isFullName: true
         },
-        value: {
-            name: "Brother Name",
-            age: 'XX',
-            hobbies: {
-                hobbie: [
-                  {value: 'Hobbie 1'},
-                  {value: 'Hobbie 2'},
-                ]
-            }
-        }
+        value: 'Pedro Entringer'
       },
-      {
-        attrs: {
-          id: 2
+      age: XX
+    },
+    brothers:{
+      brother: [
+        {
+          attrs: {
+            id: 1
+          },
+          value: {
+              name: "Brother Name",
+              age: 'XX',
+              hobbies: {
+                  hobbie: [
+                    {value: 'Hobbie 1'},
+                    {value: 'Hobbie 2'},
+                  ]
+              }
+          }
         },
-        value: {
-            name: "Brother Name",
-            age: 'XX',
-            hobbies: {
-                hobbie: [
-                  {value: 'Hobbie 1'},
-                  {value: 'Hobbie 2'},
-                ]
-            }
+        {
+          attrs: {
+            id: 2
+          },
+          value: {
+              name: "Brother Name",
+              age: 'XX',
+              hobbies: {
+                  hobbie: [
+                    {value: 'Hobbie 1'},
+                    {value: 'Hobbie 2'},
+                  ]
+              }
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
 
-const xml = json2xml("People", json)
+const xml = json2xml(json)
 ```
 Result:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<People>
+<people>
    <name encode="utf8" isFullName="true">Pedro Entringer</name>
-   <age>22</age>
+   <age>XX</age>
    <mother>
       <name encode="utf8" isFullName="true">Pedro Entringer</name>
-      <age>50</age>
+      <age>XX</age>
    </mother>
    <brothers>
       <brother id="1">
@@ -235,5 +243,5 @@ Result:
          </hobbies>
       </brother>
    </brothers>
-</People>
+</people>
 ```

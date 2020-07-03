@@ -20,11 +20,11 @@ export const initWithAttributes = (name: string, node: NodeObject) => {
     Object.keys(attributes).map( (attr: string)  => {
       const nodeValue = attributes[attr]
   
-      attrs += `${attr}="${nodeValue}" `
+      attrs += ` ${attr}="${nodeValue}"`
     })
   }
 
-  return `<${name} ${attrs}>{{xmlContent}}</${name}>`
+  return `<${name}${attrs}>{{xmlContent}}</${name}>`
 }
 
 export const arrayNode = (name: string, nodes: NodeObject[]) :string => {
