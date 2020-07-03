@@ -3,7 +3,7 @@ Convert JSON to XML
 
 ## Simple Convert
 ```js
-const {json2xml} = require('./lib/index')
+const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { name: "Pedro", age: 'XX' }
 
@@ -22,7 +22,7 @@ Result:
 
 ## Simple Convert With Attributes
 ```js
-const {json2xml} = require('./lib/index')
+const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
   name: {
@@ -48,7 +48,7 @@ Result:
 
 ## Object Convert
 ```js
-const {json2xml} = require('./lib/index')
+const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
   name: {
@@ -88,7 +88,7 @@ Result:
 
 ## Simple Array Convert
 ```js
-const {json2xml} = require('./lib/index')
+const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
   name: {
@@ -148,7 +148,7 @@ Result:
 
 ## Complex Array Convert
 ```js
-const {json2xml} = require('./lib/index')
+const {json2xml} = require('@pedroentringer/json2xml')
 
 const json = { 
   name: {
