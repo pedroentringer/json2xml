@@ -20,7 +20,7 @@ export const initWithAttributes = (name: string, node: NodeObject) => {
     Object.keys(attributes).map( (attr: string)  => {
       const nodeValue = attributes[attr]
   
-      attrs += `${attr}="${nodeValue}"`
+      attrs += `${attr}="${nodeValue}" `
     })
   }
 

@@ -1,5 +1,5 @@
 export default {
   SINGLE: 'single',
   OBJECT: 'object',
-  ARRAY: 'array'
+  ARRAY: 'array',
 }
