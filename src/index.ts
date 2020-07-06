@@ -8,7 +8,13 @@ export const json2xml = (json: NodeObject) => {
     let xml = `<?xml version='1.0' encoding='utf-8'?>{{xmlContent}}`
     let xmlContent = ''
   
-    Object.keys(json).map( key => {
+    const keys = Object.keys(json);
+
+    if(keys.length != 1){
+      throw new Error('A root tag is required')
+    }
+
+    keys.map( key => {
 
       const node = json[key] as NodeObject
       xmlContent += createNode(key, node)
