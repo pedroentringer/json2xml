@@ -5,3 +5,7 @@ export interface NodeValue {
 export interface NodeObject {
   [key: string]: NodeValue | string | number | boolean | NodeObject | Array<NodeValue> | Array<NodeObject>
 }
+
+export interface Options {
+  includeHeader: boolean
+}
